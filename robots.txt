@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lalo0790.github.io/dlsl-web/sitemap.xml
