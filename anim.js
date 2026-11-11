@@ -4,13 +4,12 @@ if(!RM&&window.gsap){
  gsap.registerPlugin(ScrollTrigger,SplitText);
  const mm=gsap.matchMedia();
  const go=()=>{
- /* 1. Hero: logo DL como máscara que crece */
- mm.add({d:"(min-width:681px)",m:"(max-width:680px)"},c=>{
-  const big=c.conditions.d?"420vh":"620vw";
+ /* 1. Hero: logo DL como máscara que crece (solo escritorio; en móvil el intro no se muestra) */
+ mm.add("(min-width:681px)",()=>{
   gsap.timeline({scrollTrigger:{trigger:".hero-track",start:"top top",end:"bottom bottom",scrub:.5}})
    .to("#maskLayer",{scale:1,duration:.3,ease:"none"})
    .to("#heroIntro",{opacity:0,y:-30,duration:.2},0)
-   .to("#maskLayer",{webkitMaskSize:big,maskSize:big,duration:.7,ease:"power2.in"},.15)
+   .to("#maskLayer",{webkitMaskSize:"420vh",maskSize:"420vh",duration:.7,ease:"power2.in"},.15)
    .to("#heroShade",{opacity:.35,duration:.25},.75);
  });
  gsap.to("#arrow",{y:8,repeat:-1,yoyo:true,ease:"sine.inOut",duration:.9});

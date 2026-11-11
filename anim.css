@@ -45,5 +45,13 @@ form{border-radius:20px;background:rgba(255,255,255,.7);backdrop-filter:blur(18p
 .front .fi{color:var(--ac)}.front small{font:600 .68rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
 .back{background:linear-gradient(140deg,var(--ac),#2a1f33);transform:rotateY(180deg);justify-content:center}
 .mvv .back p{color:rgba(255,255,255,.9);margin:0;font-size:1rem}
-@media(max-width:680px){.flip{height:280px}.mask-layer{-webkit-mask-size:62vw;mask-size:62vw}.build{max-width:320px;margin:0 0 36px}}
+@media(max-width:680px){.flip{height:280px}.mask-layer{-webkit-mask-size:62vw;mask-size:62vw}.build{max-width:320px;margin:0 0 36px}
+/* iOS Safari breaks CSS mask+transform on the intro, and the 220vh sticky track hides the real hero. Skip the intro on small screens and lead with headline + CTAs. */
+.hero-track{display:none}
+.top-stack{display:flex;flex-direction:column}
+.hero{order:-1}
+.v2 .hero{padding-top:88px;padding-bottom:36px}
+.manifest{min-height:0;padding:84px 0}
+}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-track{height:auto}.dlhero{position:relative;height:70vh}.mask-layer{transform:none}.hero-intro{display:none}}
