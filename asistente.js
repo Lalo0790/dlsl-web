@@ -121,14 +121,15 @@ Chat.prototype.trad=function(){
 };
 Chat.prototype.officialNote=function(next){
   this.d.serv=this.d.serv||t('Traducción','Translation');
-  this.say(t('Anotado 🏛️ Para trámites, te confirmamos qué tipo de traducción pide tu trámite y en qué formato se entrega.','Noted 🏛️ For official procedures, we’ll confirm what kind of translation your procedure requires and the delivery format.'));
+  this.say(t('Anotado 🏛️ Sí hacemos traducción oficial con traductor perito. Te confirmamos qué pide tu trámite y en qué formato se entrega.','Noted 🏛️ Yes, we do official certified translation with a court-certified translator (perito). We’ll confirm what your procedure requires and the delivery format.'));
   next();
 };
 Chat.prototype.pair=function(next){
   const set=l=>{this.d.par=l;next()};
-  this.say(t('¿De qué idioma a qué idioma?','From which language into which?'),[
+  this.say(t('¿De qué idioma a qué idioma? Nuestro par principal es español-inglés. También hemos hecho árabe, hebreo, japonés, francés, portugués, alemán, italiano y ruso.','From which language into which? Our main pair is Spanish-English. We have also done Arabic, Hebrew, Japanese, French, Portuguese, German, Italian and Russian.'),[
     [t('Español → Inglés','Spanish → English'),set],[t('Inglés → Español','English → Spanish'),set],
-    [t('🌍 Otro par de idiomas','🌍 Another language pair'),()=>this.ask(t('Escríbeme el par, por ejemplo: *francés → español*','Type the pair, e.g. *French → Spanish*'),v=>set(v.slice(0,40)))]]);
+    [t('🌍 Uno de los otros idiomas','🌍 One of the other languages'),()=>this.ask(t('Escríbeme el par. Hemos hecho *árabe, hebreo, japonés, francés, portugués, alemán, italiano y ruso*. Por ejemplo: *francés → español*.','Type the pair. We have done *Arabic, Hebrew, Japanese, French, Portuguese, German, Italian and Russian*. For example: *French → Spanish*.'),v=>set(v.slice(0,40)))],
+    [t('🔎 Otro idioma (buscamos lingüista)','🔎 Another language (we find a linguist)'),()=>this.ask(t('Claro, si es un idioma con el que no hemos trabajado, buscamos a los lingüistas. Escríbeme el par, por ejemplo: *coreano → español*.','Of course, if it is a language we have not worked with yet, we look for the linguists. Type the pair, e.g. *Korean → Spanish*.'),v=>set(v.slice(0,40)))]]);
 };
 Chat.prototype.docType=function(){
   this.ask(t('¿Qué documento es? Escríbelo con tus palabras (por ejemplo: *acta de nacimiento*, *contrato*, *manual técnico*).','What document is it? Describe it in your own words (e.g. *birth certificate*, *contract*, *technical manual*).'),
